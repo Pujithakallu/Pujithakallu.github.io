@@ -3,41 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Pujitha Kallu - Software Developer</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             text-align: center;
-            background: linear-gradient(to right, #ff9966, #ff5e62);
-            color: white;
+            background: #f4f4f4;
+            color: #333;
             margin: 0;
             padding: 0;
         }
         .container {
             margin-top: 50px;
         }
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid #ff5e62;
+            margin-top: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
         h1 {
-            color: #f4f4f4;
-            font-size: 2.5em;
+            font-size: 2.8em;
+            color: #222;
         }
         p {
             font-size: 1.2em;
             margin: 10px 20px;
         }
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 4px solid white;
-            margin-top: 20px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-        }
         .button {
             display: inline-block;
-            background-color: #ffffff;
-            color: #ff5e62;
-            padding: 10px 20px;
-            border-radius: 20px;
+            background-color: #ff5e62;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
             text-decoration: none;
             font-weight: bold;
             margin: 10px;
@@ -46,11 +46,8 @@
             cursor: pointer;
         }
         .button:hover {
-            background-color: #ff5e62;
-            color: white;
+            background-color: #e14e56;
         }
-
-        /* Contact Form Modal */
         .modal {
             display: none;
             position: fixed;
@@ -98,11 +95,10 @@
 <body>
 <div class="container">
     <img src="pujitha.jpeg" alt="Pujitha Kallu" class="profile-pic">
-    <h1>Welcome to My Portfolio</h1>
-    <p>Hello, I'm <b>Pujitha Kallu</b>. I'm a software developer specializing in Python, SQL, and Frontend development.</p>
-
+    <h1>Pujitha Kallu</h1>
+    <p>Software Developer | Python | SQL | Frontend</p>
     <a href="projects.html" class="button">View My Projects</a>
-    <a href="resume.pdf" class="button" download>Download Resume</a>
+    <a href="pujithakallu.pdf" class="button" download>Download Resume</a>
     <button class="button" onclick="openModal()">Contact Me</button>
 </div>
 
@@ -110,11 +106,13 @@
 <div id="contactModal" class="modal">
     <div class="modal-content">
         <h2>Contact Me</h2>
-        <input type="text" placeholder="Your Name">
-        <input type="email" placeholder="Your Email">
-        <textarea placeholder="Your Message"></textarea>
-        <button onclick="sendMessage()">Send Email</button>
-        <button class="close" onclick="closeModal()">Close</button>
+        <form action="mailto:pujithakallu.96@gmail.com" method="post" enctype="text/plain">
+            <input type="text" name="Name" placeholder="Your Name" required>
+            <input type="email" name="Email" placeholder="Your Email" required>
+            <textarea name="Message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Email</button>
+            <button type="button" class="close" onclick="closeModal()">Close</button>
+        </form>
     </div>
 </div>
 
@@ -124,3 +122,8 @@
     }
 
     function closeModal() {
+        document.getElementById('contactModal').style.display = 'none';
+    }
+</script>
+</body>
+</html>
