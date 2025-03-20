@@ -5,52 +5,297 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Projects</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-color: #f4f4f4;
-      padding: 20px;
+    /* Basic Reset and Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    h1 {
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(145deg, #f6f9fc, #edf1f7);
+      min-height: 100vh;
+      padding: 40px 20px;
       color: #333;
     }
-    ul {
-      list-style-type: none;
-      padding: 0;
+
+    /* Header Styles */
+    header {
+      text-align: center;
+      margin-bottom: 50px;
     }
-    li {
-      margin: 10px 0;
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
     }
-    a {
-      text-decoration: none;
+
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, #007bff, #ff5e62);
+      border-radius: 2px;
+    }
+
+    /* Projects Container */
+    .projects-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Project Card Styles */
+    .project-card {
+      width: 320px;
+      height: 400px;
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .project-card:hover .project-image {
+      transform: scale(1.1);
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.1) 0%,
+        rgba(0, 0, 0, 0.7) 70%,
+        rgba(0, 0, 0, 0.9) 100%
+      );
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 25px;
+      transition: background 0.3s ease;
+    }
+
+    .project-card:hover .overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 123, 255, 0.3) 0%,
+        rgba(0, 123, 255, 0.7) 70%,
+        rgba(0, 123, 255, 0.9) 100%
+      );
+    }
+
+    .project-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 12px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .tech-tag {
+      font-size: 11px;
+      padding: 4px 10px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      border-radius: 20px;
+      font-weight: 500;
+      backdrop-filter: blur(5px);
+    }
+
+    .project-description {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+    }
+
+    .project-card:hover .project-description {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project-link {
+      display: inline-block;
+      padding: 8px 18px;
+      background-color: rgba(255, 255, 255, 0.9);
       color: #007bff;
-      font-weight: bold;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      transform: translateY(20px);
+      opacity: 0;
     }
-    a:hover {
+
+    .project-card:hover .project-link {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .project-link:hover {
+      background-color: white;
       color: #ff5e62;
     }
+
+    /* Back Button */
+    .back-container {
+      text-align: center;
+      margin-top: 60px;
+    }
+
     .back {
       display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #007bff;
+      padding: 12px 30px;
+      background: linear-gradient(90deg, #007bff, #0062cc);
       color: white;
-      border-radius: 5px;
+      border-radius: 30px;
       text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
     }
+
     .back:hover {
-      background-color: #ff5e62;
+      background: linear-gradient(90deg, #ff5e62, #ff8a84);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 94, 98, 0.3);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .projects-container {
+        gap: 20px;
+      }
+
+      .project-card {
+        width: 100%;
+        max-width: 350px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      .project-description {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .project-link {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 <body>
-<h1>Projects</h1>
-<ul>
-  <li><a href="https://github.com/Pujithakallu/supersetfirebase">Mathgames</a> - A Flutter-based full stack app</li>
-  <li><a href="https://github.com/Pujithakallu/Web_server">Webserver</a> - Python with socket programming</li>
-  <li><a href="https://github.com/Pujithakallu/OdysseyMobileApp">OdysseyTravelApp</a> - A Flutter & Dart app using Google Maps API</li>
-  <li><a href="https://github.com/Pujithakallu/CarpoolingRideSharingApp">CarpoolRideSharingApp</a> - Java Spring MVC Framework</li>
-</ul>
-<a href="index.html" class="back">Back to Home</a>
+<header>
+  <h1>My Projects</h1>
+</header>
+
+<div class="projects-container">
+  <div class="project-card">
+    <img src="Mathgames.jpeg" alt="Math Games App" class="project-image">
+    <div class="overlay">
+      <div class="project-title">Math Games</div>
+      <div class="project-tech">
+        <span class="tech-tag">Flutter</span>
+        <span class="tech-tag">Firebase</span>
+        <span class="tech-tag">Dart</span>
+      </div>
+      <div class="project-description"><a href="https://fih-superset-dev.web.app/" class="current-link">Live App  </a></div>
+      <div>  An interactive Flutter-based full stack application with engaging math games and exercises designed for different age groups and learning levels.</div>
+      <a href="https://github.com/Pujithakallu/supersetfirebase" class="project-link">View Code
+      </a>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <img src="index.jpeg" alt="Web Server" class="project-image">
+    <div class="overlay">
+      <div class="project-title">Web Server</div>
+      <div class="project-tech">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Socket Programming</span>
+        <span class="tech-tag">HTTP</span>
+      </div>
+      <div class="project-description">A custom Python-based web server implementation using socket programming to efficiently handle HTTP requests and responses with minimal dependencies.</div>
+      <a href="https://github.com/Pujithakallu/Web_server" class="project-link">View Code</a>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <img src="oddessey.jpeg" alt="Odyssey Travel App" class="project-image">
+    <div class="overlay">
+      <div class="project-title">Odyssey Travel App</div>
+      <div class="project-tech">
+        <span class="tech-tag">Flutter</span>
+        <span class="tech-tag">Dart</span>
+        <span class="tech-tag">Google Maps API</span>
+      </div>
+      <div class="project-description">A comprehensive Flutter & Dart mobile application that leverages Google Maps API to help travelers plan routes, discover attractions, and navigate their journeys with ease.</div>
+      <a href="https://github.com/Pujithakallu/OdysseyMobileApp" class="project-link">View Code</a>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <img src="carpool.jpeg" alt="Carpool Ride Sharing App" class="project-image">
+    <div class="overlay">
+      <div class="project-title">Carpool Ride Sharing</div>
+      <div class="project-tech">
+        <span class="tech-tag">Java</span>
+        <span class="tech-tag">Spring MVC</span>
+        <span class="tech-tag">REST API</span>
+      </div>
+      <div class="project-description">A Java Spring MVC application that connects drivers with passengers for sustainable carpooling, featuring route matching, scheduling, and secure payment processing.</div>
+      <a href="https://github.com/Pujithakallu/CarpoolingRideSharingApp" class="project-link">View Code</a>
+    </div>
+  </div>
+</div>
+
+<div class="back-container">
+  <a href="index.html" class="back">Back to Home</a>
+</div>
 </body>
 </html>
