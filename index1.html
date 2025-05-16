@@ -423,6 +423,20 @@
             background: linear-gradient(90deg, #FFA500, #FFD700);
         }
 
+        /* Feedback messages */
+        .form-status {
+            text-align: center;
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .status-success {
+            background-color: rgba(76, 175, 80, 0.2);
+            color: #c3ffbe;
+        }
+
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -602,7 +616,7 @@
             </div>
 
             <div class="contact-form-container">
-                <form id="contact-form" class="contact-form">
+                <form id="contact-form" class="contact-form" onsubmit="sendEmail(event)">
                     <div class="form-group">
                         <input type="text" id="name" name="name" placeholder="Your Name" required>
                     </div>
@@ -612,15 +626,16 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="text" id="subject" name="subject" placeholder="Subject">
+                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
                     </div>
 
                     <div class="form-group">
                         <textarea id="message" name="message" placeholder="Your Message" required></textarea>
                     </div>
 
-                    <button type="submit" class="submit-button">Send Message</button>
+                    <button type="submit" class="submit-button" id="submit-btn">Send Message</button>
                 </form>
+                <div id="form-status" class="form-status"></div>
             </div>
         </div>
     </section>
@@ -659,8 +674,8 @@
         particlesContainer.appendChild(particle);
     }
 
-    // Form submission handling
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
+    // Function to send email using mailto: protocol
+    function sendEmail(e) {
         e.preventDefault();
 
         const name = document.getElementById('name').value;
@@ -668,13 +683,32 @@
         const subject = document.getElementById('subject').value;
         const message = document.getElementById('message').value;
 
-        // Here you would typically send this data to a server
-        // For now, we'll just alert a success message
-        alert(`Thank you for reaching out, ${name}! Your message has been received. I'll get back to you soon.`);
+        // Create the email body with sender's information
+        const emailBody = `
+Name: ${name}
+Email: ${email}
 
-        // Clear the form
-        this.reset();
-    });
+Message:
+${message}
+        `;
+
+        // Create mailto link with recipient, subject and body
+        const mailtoLink = `mailto:pujithakallu.96@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+
+        // Open the default mail client
+        window.location.href = mailtoLink;
+
+        // Show success message
+        const formStatus = document.getElementById('form-status');
+        formStatus.className = 'form-status status-success';
+        formStatus.textContent = 'Opening your email client...';
+        formStatus.style.display = 'block';
+
+        // Reset form after a delay
+        setTimeout(() => {
+            document.getElementById('contact-form').reset();
+        }, 2000);
+    }
 </script>
 </body>
 </html>
