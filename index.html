@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pujitha Kallu | Software Engineer</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298, #4776E6);
+      background-size: 200% 200%;
+      color: white;
+      animation: gradientAnimation 10s ease infinite;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header {
+      padding: 30px 0;
+      text-align: right;
+      padding-right: 50px;
+    }
+
+    .nav-link {
+      margin-left: 20px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .profile-pic-container {
+      position: relative;
+      margin-bottom: 30px;
+    }
+
+    .glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      filter: blur(20px);
+      z-index: -1;
+    }
+
+    .profile-pic {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 5px solid rgba(255, 255, 255, 0.7);
+      object-fit: cover;
+      margin-bottom: 20px;
+      z-index: 1;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin: 10px 0;
+    }
+
+    .tagline {
+      font-size: 1.4em;
+      margin-bottom: 10px;
+    }
+
+    .highlight {
+      color: #FFD700;
+    }
+
+    .button {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: white;
+      color: #1e3c72;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .button:hover {
+      background-color: #FFD700;
+    }
+
+    .contact-section {
+      margin-top: 50px;
+      background: rgba(255,255,255,0.1);
+      padding: 40px;
+      border-radius: 10px;
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      font-size: 16px;
+    }
+
+    .submit-button {
+      background: linear-gradient(90deg, #FFD700, #FFA500);
+      color: #1e3c72;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .submit-button:hover {
+      transform: scale(1.05);
+    }
+
+    .footer-note {
+      margin-top: 10px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9em;
+    }
+
+    /* Project section styling */
+    #projects {
+      margin-top: 50px;
+      background: rgba(255,255,255,0.05);
+      padding: 30px;
+      border-radius: 10px;
+    }
+
+    #project-content {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="#about" class="nav-link">About</a>
+  <a href="#projects" class="nav-link" id="load-projects">Projects</a>
+  <a href="Pujithakallu.pdf" class="nav-link">Resume</a>
+  <a href="#contact" class="nav-link">Contact</a>
+</header>
+
+<div class="container" id="about">
+  <section class="hero fade-in">
+    <div class="profile-pic-container">
+      <div class="glow"></div>
+      <img src="pujitha.jpeg" alt="Pujitha Kallu" class="profile-pic">
+    </div>
+
+    <h1>Pujitha Kallu</h1>
+    <p class="tagline">Software Engineer | Full-Stack Developer | <span class="highlight">Cloud & Data Enthusiast</span></p>
+    <p>Master's in Computer Science, Santa Clara University (GPA: <span class="highlight">3.8/4</span>)</p>
+
+    <a href="#projects" class="button" id="view-projects">View My Projects</a>
+    <a href="Pujitha_kallu.pdf" class="button" download>Download Resume</a>
+    <a href="https://www.linkedin.com/in/pujitha-kallu-49a234105/" class="button">LinkedIn</a>
+    <a href="https://github.com/Pujithakallu" class="button">GitHub</a>
+  </section>
+</div>
+
+<!-- Placeholder for Projects Section -->
+<div class="container" id="projects">
+  <h2>My Projects</h2>
+  <div id="project-content">Click "View My Projects" to load content...</div>
+</div>
+
+<div class="container contact-section" id="contact">
+  <h2>Get In Touch</h2>
+
+  <form action="https://formsubmit.co/pujithakallu.96@gmail.com" method="POST" class="contact-form">
+    <input type="hidden" name="_next" value="thankyou.html">
+    <input type="hidden" name="_captcha" value="false">
+
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <input type="text" name="subject" placeholder="Subject" required>
+    <textarea name="message" placeholder="Your Message" required></textarea>
+
+    <button type="submit" class="submit-button">Send Message</button>
+  </form>
+
+  <p class="footer-note">This form sends your message directly to my inbox using FormSubmit. No email client needed.</p>
+</div>
+
+<script>
+  function loadProjectsContent() {
+    fetch("project.html")
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Project file not found.");
+        }
+        return response.text();
+      })
+      .then(html => {
+        document.getElementById("project-content").innerHTML = html;
+        window.location.hash = "projects";
+      })
+      .catch(error => {
+        document.getElementById("project-content").innerHTML = "<p style='color: #FFD700;'>Failed to load project content. Make sure project.html is in the same folder.</p>";
+        console.error(error);
+      });
+  }
+
+  document.getElementById("load-projects").addEventListener("click", function(e) {
+    e.preventDefault();
+    loadProjectsContent();
+  });
+
+  document.getElementById("view-projects").addEventListener("click", function(e) {
+    e.preventDefault();
+    loadProjectsContent();
+  });
+</script>
+
+</body>
+</html>
