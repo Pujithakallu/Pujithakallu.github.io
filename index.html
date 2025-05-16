@@ -6,107 +6,143 @@
   <title>Pujitha Kallu | Software Engineer</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #1e3c72, #2a5298, #4776E6);
-      background-size: 200% 200%;
-      color: white;
-      animation: gradientAnimation 10s ease infinite;
-      min-height: 100vh;
       margin: 0;
-      padding: 0;
-    }
-
-    @keyframes gradientAnimation {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      padding-bottom: 60px;
     }
 
     header {
-      padding: 30px 0;
-      text-align: right;
-      padding-right: 50px;
-    }
-
-    .nav-link {
-      margin-left: 20px;
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      cursor: pointer;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
       text-align: center;
-      padding: 20px;
-    }
-
-    .profile-pic-container {
-      position: relative;
-      margin-bottom: 30px;
-    }
-
-    .glow {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
-      filter: blur(20px);
-      z-index: -1;
-    }
-
-    .profile-pic {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      border: 5px solid rgba(255, 255, 255, 0.7);
-      object-fit: cover;
-      margin-bottom: 20px;
-      z-index: 1;
-      position: relative;
+      padding: 50px 20px 20px;
     }
 
     h1 {
       font-size: 3em;
-      margin: 10px 0;
+      margin: 0;
+      font-weight: bold;
     }
 
     .tagline {
-      font-size: 1.4em;
-      margin-bottom: 10px;
+      font-size: 1.2em;
+      margin: 10px 0;
     }
 
     .highlight {
       color: #FFD700;
+      font-weight: bold;
+    }
+
+    .button-container {
+      margin: 20px 0;
     }
 
     .button {
       display: inline-block;
-      margin: 10px;
-      padding: 10px 20px;
-      background-color: white;
+      margin: 10px 10px 0;
+      padding: 12px 22px;
+      background: white;
       color: #1e3c72;
-      text-decoration: none;
+      border: none;
       border-radius: 30px;
+      text-decoration: none;
       font-weight: bold;
-      transition: 0.3s;
+      transition: 0.3s ease;
     }
 
     .button:hover {
-      background-color: #FFD700;
+      background: #FFD700;
+      color: #1e3c72;
     }
 
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    .highlighted-heading {
+      font-size: 2.5em;
+      color: #FFD700;
+      margin-bottom: 10px;
+      animation: fadeIn 1s ease-in-out;
+      text-align: center;
+    }
+
+    .subheading {
+      text-align: center;
+      color: #f1f1f1;
+      font-size: 1.1em;
+      margin-bottom: 30px;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 15px;
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      border: 1px solid #FFD700;
+    }
+
+    .project-title {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #FFD700;
+      margin-bottom: 10px;
+    }
+
+    .project-description {
+      font-size: 0.95em;
+      margin-bottom: 12px;
+      color: #f1f1f1;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tech-tag {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85em;
+      color: white;
+      font-weight: 500;
+    }
+
+    /* Contact Section */
     .contact-section {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 40px 20px;
       margin-top: 50px;
-      background: rgba(255,255,255,0.1);
-      padding: 40px;
-      border-radius: 10px;
     }
 
     .contact-form {
@@ -122,9 +158,14 @@
       padding: 15px;
       border: none;
       border-radius: 10px;
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.15);
       color: white;
       font-size: 16px;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: rgba(255,255,255,0.8);
     }
 
     .submit-button {
@@ -144,103 +185,113 @@
 
     .footer-note {
       margin-top: 10px;
+      text-align: center;
       color: rgba(255,255,255,0.7);
       font-size: 0.9em;
     }
 
-    /* Project section styling */
-    #projects {
-      margin-top: 50px;
-      background: rgba(255,255,255,0.05);
-      padding: 30px;
-      border-radius: 10px;
-    }
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+      }
 
-    #project-content {
-      margin-top: 20px;
+      .button {
+        font-size: 0.9em;
+        padding: 10px 16px;
+      }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <a href="#about" class="nav-link">About</a>
-  <a href="#projects" class="nav-link" id="load-projects">Projects</a>
-  <a href="Pujithakallu.pdf" class="nav-link">Resume</a>
-  <a href="#contact" class="nav-link">Contact</a>
+  <h1>Pujitha Kallu</h1>
+  <p class="tagline">Software Engineer | Full-Stack Developer | <span class="highlight">Cloud & Data Enthusiast</span></p>
+  <p>Master's in Computer Science, Santa Clara University (GPA: <span class="highlight">3.8/4</span>)</p>
+
+  <div class="button-container">
+    <a href="Pujitha_kallu.pdf" class="button" download>Download Resume</a>
+    <a href="https://www.linkedin.com/in/pujitha-kallu-49a234105/" target="_blank" class="button">LinkedIn</a>
+    <a href="https://github.com/Pujithakallu" target="_blank" class="button">GitHub</a>
+  </div>
 </header>
 
-<div class="container" id="about">
-  <section class="hero fade-in">
-    <div class="profile-pic-container">
-      <div class="glow"></div>
-      <img src="pujitha.jpeg" alt="Pujitha Kallu" class="profile-pic">
+<section id="projects">
+  <h2 class="highlighted-heading"> Highlighted Projects</h2>
+  <p class="subheading">Explore my featured work that showcases problem-solving, design, and scalability.</p>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-title">Carpool Ridesharing App</div>
+      <div class="project-description">
+        A full-featured application that connects drivers with passengers for sustainable carpooling solutions.
+      </div>
+      <div class="tech-tags">
+        <span class="tech-tag">Java</span>
+        <span class="tech-tag">Spring Boot</span>
+        <span class="tech-tag">Google Maps API</span>
+      </div>
     </div>
 
-    <h1>Pujitha Kallu</h1>
-    <p class="tagline">Software Engineer | Full-Stack Developer | <span class="highlight">Cloud & Data Enthusiast</span></p>
-    <p>Master's in Computer Science, Santa Clara University (GPA: <span class="highlight">3.8/4</span>)</p>
+    <div class="project-card">
+      <div class="project-title">Odyssey - Solo Travel App</div>
+      <div class="project-description">
+        Mobile app for enhancing solo travelers' experiences with interactive maps and local suggestions.
+      </div>
+      <div class="tech-tags">
+        <span class="tech-tag">Flutter</span>
+        <span class="tech-tag">Firebase</span>
+        <span class="tech-tag">Dart</span>
+      </div>
+    </div>
 
-    <a href="#projects" class="button" id="view-projects">View My Projects</a>
-    <a href="Pujitha_kallu.pdf" class="button" download>Download Resume</a>
-    <a href="https://www.linkedin.com/in/pujitha-kallu-49a234105/" class="button">LinkedIn</a>
-    <a href="https://github.com/Pujithakallu" class="button">GitHub</a>
-  </section>
-</div>
+    <div class="project-card">
+      <div class="project-title">Product Recommendation System</div>
+      <div class="project-description">
+        ML system that analyzes user behavior to deliver personalized product recommendations.
+      </div>
+      <div class="tech-tags">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Machine Learning</span>
+        <span class="tech-tag">Data Analysis</span>
+      </div>
+    </div>
 
-<!-- Placeholder for Projects Section -->
-<div class="container" id="projects">
-  <h2>My Projects</h2>
-  <div id="project-content">Click "View My Projects" to load content...</div>
-</div>
+    <div class="project-card">
+      <div class="project-title">Bilingual Math Learning App</div>
+      <div class="project-description">
+        <a href="https://fih-superset-dev.web.app/" target="_blank" style="color: #FFD700; font-weight: bold; text-decoration: underline;">
+          Live App
+        </a>
+      </div>
+      <div class="project-description">
+        An interactive Flutter-based full stack application with engaging math games and exercises designed for different age groups and learning levels.
+      </div>
+      <div class="project-description">
+        <a href="https://github.com/Pujithakallu/supersetfirebase" target="_blank" style="color: #FFD700; font-weight: bold; text-decoration: underline;">
+          View Code
+        </a>
+      </div>
+      <div class="tech-tags">
+        <span class="tech-tag">Flutter</span>
+        <span class="tech-tag">Firebase</span>
+        <span class="tech-tag">Dart</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-<div class="container contact-section" id="contact">
+<section id="contact" class="contact-section">
   <h2>Get In Touch</h2>
-
   <form action="https://formsubmit.co/pujithakallu.96@gmail.com" method="POST" class="contact-form">
-    <input type="hidden" name="_next" value="thankyou.html">
+    <input type="hidden" name="_next" value="https://pujithakallu.github.io/thankyou.html">
     <input type="hidden" name="_captcha" value="false">
-
     <input type="text" name="name" placeholder="Your Name" required>
     <input type="email" name="email" placeholder="Your Email" required>
     <input type="text" name="subject" placeholder="Subject" required>
-    <textarea name="message" placeholder="Your Message" required></textarea>
-
+    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
     <button type="submit" class="submit-button">Send Message</button>
   </form>
-
-  <p class="footer-note">This form sends your message directly to my inbox using FormSubmit. No email client needed.</p>
-</div>
-
-<script>
-  function loadProjectsContent() {
-    fetch("project.html")
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Project file not found.");
-        }
-        return response.text();
-      })
-      .then(html => {
-        document.getElementById("project-content").innerHTML = html;
-        window.location.hash = "projects";
-      })
-      .catch(error => {
-        document.getElementById("project-content").innerHTML = "<p style='color: #FFD700;'>Failed to load project content. Make sure project.html is in the same folder.</p>";
-        console.error(error);
-      });
-  }
-
-  document.getElementById("load-projects").addEventListener("click", function(e) {
-    e.preventDefault();
-    loadProjectsContent();
-  });
-
-  document.getElementById("view-projects").addEventListener("click", function(e) {
-    e.preventDefault();
-    loadProjectsContent();
-  });
-</script>
+</section>
 
 </body>
 </html>
